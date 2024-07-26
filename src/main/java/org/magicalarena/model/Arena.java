@@ -18,5 +18,4 @@ public class Arena {
         this.player2 = player2;
         this.random = new Random();
     }
-    
 }
