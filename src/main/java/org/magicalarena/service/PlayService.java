@@ -3,14 +3,20 @@ package org.magicalarena.service;
 import org.magicalarena.model.Arena;
 import org.magicalarena.model.Player;
 
-public class PlayService {
-    private Arena arena;
+import java.util.Random;
 
-    private int rollDice() {
-        return arena.getRandom().nextInt(6) + 1;
+public class PlayService {
+    private Random random;
+
+    public PlayService() {
+        this.random = new Random();
     }
 
-    private void performAttack(Player attacker, Player defender) {
+    private int rollDice() {
+        return random.nextInt(6) + 1;
+    }
+
+    public void performAttack(Player attacker, Player defender) {
         int attackRoll = rollDice();
         int defendRoll = rollDice();
 
@@ -24,9 +30,9 @@ public class PlayService {
         System.out.println(attacker + " attacks " + defender + " with roll " + attackRoll + " causing " + damageDealt + " damage");
     }
 
-    public Player fight() {
-        var player1=arena.getPlayer1();
-        var player2=arena.getPlayer2();
+    public Player fight(Arena arena) {
+        Player player1 = arena.getPlayer1();
+        Player player2 = arena.getPlayer2();
 
         while (player1.isAlive() && player2.isAlive()) {
             if (player1.getHealth() <= player2.getHealth()) {
@@ -42,3 +48,4 @@ public class PlayService {
         return player1.isAlive() ? player1 : player2;
     }
 }
+
