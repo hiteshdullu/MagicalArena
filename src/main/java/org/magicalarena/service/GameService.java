@@ -5,10 +5,10 @@ import org.magicalarena.model.Player;
 
 import java.util.Random;
 
-public class PlayService {
+public class GameService {
     private Random random;
 
-    public PlayService() {
+    public GameService() {
         this.random = new Random();
     }
 
@@ -47,5 +47,11 @@ public class PlayService {
         }
         return player1.isAlive() ? player1 : player2;
     }
+
+    public void printWinner(Player winner, Player player1, Player player2) {
+        String winnerName = (winner == player1) ? "Player A" : "Player B";
+        System.out.println("The winner is: " + winnerName);
+    }
+
 }
 

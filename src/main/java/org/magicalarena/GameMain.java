@@ -2,7 +2,7 @@ package org.magicalarena;
 
 import org.magicalarena.model.Arena;
 import org.magicalarena.model.Player;
-import org.magicalarena.service.PlayService;
+import org.magicalarena.service.GameService;
 
 public class GameMain {
     public static void main(String[] args) {
@@ -10,9 +10,9 @@ public class GameMain {
         Player playerB = new Player(100, 10, 5);
 
         Arena arena = new Arena(playerA, playerB);
-        PlayService gameService = new PlayService();
+        GameService gameService = new GameService();
         Player winner = gameService.fight(arena);
 
-        System.out.println("The winner is: " + winner);
+        gameService.printWinner(winner, playerA, playerB);
     }
 }
