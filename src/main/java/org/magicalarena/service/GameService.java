@@ -4,15 +4,18 @@ import org.magicalarena.model.Arena;
 import org.magicalarena.model.Player;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class GameService {
     private Random random;
-
+    private Scanner scanner;
     public GameService() {
         this.random = new Random();
+        this.scanner = new Scanner(System.in);
     }
 
     private int rollDice() {
+        System.out.println("Roll dice");
         return random.nextInt(6) + 1;
     }
 
