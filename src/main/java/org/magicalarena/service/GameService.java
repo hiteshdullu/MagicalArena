@@ -9,15 +9,31 @@ import java.util.Scanner;
 public class GameService {
     private Random random;
     private Scanner scanner;
+
     public GameService() {
         this.random = new Random();
         this.scanner = new Scanner(System.in);
+    }
+
+    public Player createPlayer(Scanner scanner) {
+
+        System.out.print("Enter health: ");
+        int health = scanner.nextInt();
+
+        System.out.print("Enter strength: ");
+        int strength = scanner.nextInt();
+
+        System.out.print("Enter attack: ");
+        int attack = scanner.nextInt();
+
+        return new Player(health, strength, attack);
     }
 
     private int rollDice() {
         System.out.println("Roll dice");
         return random.nextInt(6) + 1;
     }
+
 
     public void performAttack(Player attacker, Player defender) {
         int attackRoll = rollDice();
